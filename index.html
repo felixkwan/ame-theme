@@ -899,7 +899,11 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
               <li><a href="/archive">{lang:Archive}</a></li>
               {/block:IfShowArchive}
 
-              <li><a href="https://www.tumblr.com/theme/40998">Get this theme</a></li>
+                {block:HasPages}
+                {block:Pages}
+                <li><a href="{URL}">{Label}</a></li>
+                {/block:Pages}
+                {/block:HasPages}
         </ul>
 
     </div> <!-- /.nav -->
@@ -1239,7 +1243,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.0b2.120519/jquery.infinitescroll.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.11/jquery.mousewheel.min.js"></script>
 <script src="https://static.tumblr.com/mravxd7/BhNpiuy90/scrollconvertor.min.js"></script>
-<script src="https://static.tumblr.com/mravxd7/XzSpkumlq/main.min.js"></script>
+<script src="https://static.tumblr.com/mravxd7/pf1pl2160/main.min.js"></script>
 
 
 </html>
