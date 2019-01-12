@@ -28,6 +28,7 @@
 <meta name="color:Select" content="#CCCCCC"/>
 <meta name="color:Conversation wrap" content="#EEEEEE"/>
 <meta name="color:Light grey" content="#EEEEEE"/>
+<meta name="color:Black" content="#101010"/>
 
 <!-- Accounts -->
 <meta name="text:URL Twitter" content=""/>
@@ -44,12 +45,14 @@
 <meta name="if:Overlay On" content="1"/>
 
 <!-- Google font -->
-<meta name="text:Google font" content="Montserrat"/>
-<meta name="text:Font light size" content="300"/>
+<meta name="text:Google font" content=""/>
+<meta name="text:Font light size" content=""/>
 
 <link href="https://fonts.googleapis.com/css?family={text:Google font}" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family={text:Google font}:{text:Font light size}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -68,12 +71,11 @@ background: transparent;
 }
 
 html {
-    white-space: nowrap;
+    background: transparent;
 }
 
 body {
   width: auto;
-  line-height: 2em;
   word-break: break-all;
   margin: 0;
   padding: 0;
@@ -124,14 +126,16 @@ input {
 /* Basic Style */
 
 body {
-    font-family: '{text:Google font}', sans-serif;
-    font-size: 1em;
+    font-size: .8rem;
     {block:IfGooglefont}font-family: '{text:Google font}', sans-serif;{/block:IfGooglefont};
     word-break: break-all;
-    font-size: .8em;
     vertical-align: baseline;
-    line-height: 1.8rem;
     background-color: {color:Background};
+    line-height: 1.8rem;
+}
+
+body.indexpage {
+    overflow-y: hidden;
 }
 
 body.header-open {
@@ -161,7 +165,6 @@ body.header-open {
 input,form {
     font-family: Helvetica, sans-serif;
     font-weight: 300;
-    letter-spacing: 1px;
 }
 
 textarea,
@@ -184,11 +187,11 @@ input {
 .toggle-btn {
     display: block;
     width: 28px;
-    height: 18px;
+    height: 28px;
     position: fixed;
-    top: 28px;
-    margin-left: 36px;
-    padding: 5px 4px;
+    top: 30px;
+    margin-left: 30px;
+    padding: 6px 6px;
     background: transparent;
     z-index: 9999;
     cursor: pointer;
@@ -209,17 +212,17 @@ input {
     left: 0;
 }
 
-body .toggle-btn > div:nth-child(1) {
+.toggle-btn > div:nth-child(1) {
     margin-bottom: 8px;
     transition: all .4s ease;
 }
 
-body .toggle-btn > div:nth-child(2) {
+.toggle-btn > div:nth-child(2) {
     margin-bottom: 8px;
     transition: all .4s ease;
 }
 
-body .toggle-btn > div:nth-child(3) {
+.toggle-btn > div:nth-child(3) {
     margin-top: 16px;
     transition: all .4s ease;
 }
@@ -251,7 +254,6 @@ body .toggle-btn > div:nth-child(3) {
 .header {
     overflow-x: hidden;
     color: {color:Body};
-    letter-spacing: -.2px;
     position: fixed;
     top: 0;
     height: 100%;
@@ -276,22 +278,23 @@ body .toggle-btn > div:nth-child(3) {
 }
 
 .header .header_inner {
-    padding: 0 40px;
+    padding: 0 30px;
     margin-top: 100px;
 }
 
 .header .site-title {
-    margin: 20px 0;
+    margin: 12px 0;
+    font-size: 2rem;
 }
 
 .header a {
     color: {color:Link};
-    font-size: 1.4em;
     {block:IfFontlightsize}font-weight: {text:Font light size};{/block:IfFontlightsize}
 }
 
 .header .description-wrapper {
-    margin: 16px 0;
+    margin-bottom: 12px;
+    font-size: .9rem;
     white-space: normal;
     word-break: break-word;
 }
@@ -301,7 +304,6 @@ body .toggle-btn > div:nth-child(3) {
     width: 100%;
     float: left;
     padding-top: 12px;
-    border-top: solid 1px {color:Light grey};
 }
 
 @media only screen and (max-width: 768px) {
@@ -311,15 +313,20 @@ body .toggle-btn > div:nth-child(3) {
 }
 
 .header .link li a {
-    font-size: 1em;
-    text-transform: uppercase;
-    letter-spacing: normal;
+    font-size: .8rem;
+    border-left: solid 2px {color:Light grey};
+    padding: 0 16px;
+    transition: all .25s ease;
+}
+
+.header .link li a:hover {
+    border-color: {color:Black};
 }
 
 .header .menu li,
 .header .social-link li {
     margin-right: 12px;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
 }
 
 .header .menu li:last-child,
@@ -332,33 +339,14 @@ body .toggle-btn > div:nth-child(3) {
     bottom: 40px;
 }
 
-/* Media */
-
-article.type_photo img,
-article.type_link img,
-article.type_text img,
-article figure img,
-article blockquote img {
-    width: auto;
-    height: 100%;
-    max-height: 80vh;
-    vertical-align: middle;
+.indexpage #posts {
+     white-space: nowrap;
+     padding: 0;
 }
 
-article.type_photoset .post-figure .photoset-cell {
-    margin-right: 5px;
-}
-
-article.type_photoset .post-figure img:last-child {
-    margin-right: 0;
-}
-
-.permalinkpage article.type_photo img,
-.permalinkpage article.type_link img,
-.permalinkpage article.type_text img,
-.permalinkpage article figure img,
-.permalinkpage article blockquote img {
-    height: 80vh;
+.indexpage #horizontal {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 /* Main */
@@ -388,157 +376,79 @@ article.type_photoset .post-figure img:last-child {
     }
 }
 
-#posts {
-     white-space: nowrap;
-     margin: 0 40px;
-     padding: 0;
-}
-
-#horizontal {
-    min-width: 100%;
-    margin-top: 80px;
-}
-
-@media only screen and (max-width: 480px) {
-    #horizontal {
-        margin-top: 100px;
-    }
-}
-
 article {
     color: {color:Body};
-    font-size: 1em;
-    letter-spacing: -.1px;
     display: inline-block;
-    vertical-align: middle;
-}
-
-@media only screen and (max-width: 768px) {
-
-    article.type_video {
-        width: 100%;
-    }
-
-    .type_video .video-container {
-        height: 0;
-        padding-bottom: 67.5%;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .type_video .video-container embed,
-    .type_video .video-container iframe,
-    .type_video .video-container object,
-    .type_video .video-container video {
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100% !important;
-        position: absolute;
-    }
-
-    .type_video.widescreen .video-container {
-        padding-bottom: 56.25%;
-    }
-
-    .type_video.vimeo .video-container {
-        padding-top: 0;
-    }
+    background: transparent;
+    white-space: normal;
+    overflow: hidden;
+    font-size: 1rem;
+    vertical-align: top;
 }
 
 .indexpage article {
-    margin-right: 10%;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    margin: 0 20px;
 }
 
-.permalinkpage article {
-    min-width: 100%;
+.indexpage article.type_photoset {
+    white-space: nowrap;
 }
 
-article .post_inner {
-    width: 100%;
+.indexpage article.type_photoset .photoset-cell {
+    margin-right: 5px;
 }
 
-article .post__inner {
-    position: relative;
+.indexpage article.type_photoset .photoset-cell:last-child {
+    margin-right: 0;
 }
 
-article .content blockquote {
-    margin: 4px 0;
-}
-
-.indexpage article.type_video .content,
-.indexpage article.type_audio .content,
-.indexpage article.type_photo .content {
-    display: none;
-}
-
-
-@media only screen and (max-width: 768px) {
-
-    article.type_photo img,
-    article.type_link img,
-    article.type_text img,
-    article figure img,
-    article blockquote img {
-        max-height: 60vh;
-    }
-
-    .indexpage article {
-        margin-right: 25%;
-    }
-
-    .indexpage article.type_text,
-    .indexpage article.type_quote {
-        width: 80vw;
-    }
-}
-
-/* text */
-
-.indexpage article.type_text,
-.indexpage article.type_chat,
-.indexpage article.type_quote,
-.indexpage article.type_answer {
-    min-width: 25%;
-    white-space: normal;
+.permalinkpage article.type_photoset .photoset-cell {
+    display: block;
 }
 
 @media only screen and (min-width: 768px) {
-    .indexpage article.type_text {
+    .indexpage article:not(.type_photoset) {
         max-width: 50%;
     }
 }
 
-.permalinkpage article .post-footer,
-.permalinkpage article .content {
-    width: 50%;
+.indexpage article .post_inner {
+    position: relative;
+    padding: 0 20px;
+    margin-top: 15vh;
 }
 
-@media only screen and (min-width: 1024px) {
-    .permalinkpage article:not(.type_text) .content,
-    .permalinkpage article .post-footer {
-        width: 33.3%;
-    }
+.indexpage article .caption {
+    display: none;
 }
 
-@media only screen and (min-width: 1440px) {
-    .permalinkpage article .content,
-    .permalinkpage article .post-footer {
-        width: 25%;
-    }
+.permalinkpage article {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
 }
+
+article .post__inner {
+    padding: 36px;
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+/* text */
 
 .post-header {
     margin-bottom: 16px;
 }
 
-.permalinkpage .post-header {
-    margin-top: 5%;
-}
-
 .post-header a {
     color: {color:Link};
-    font-size: 1.2em;
+    font-size: 1.6rem;
+}
+
+.permalinkpage article .content {
+    padding: 36px 0;
 }
 
 .content a,
@@ -548,7 +458,69 @@ article .content blockquote {
 .answerer a,
 .read-more a {
     color: {color:Link};
-    text-decoration: underline;
+}
+
+/* Media */
+
+article .post-figure {
+    text-align: center;
+}
+
+.permalinkpage article.type_photo img,
+.permalinkpage article.type_link img,
+.permalinkpage article.type_text img,
+.permalinkpage article figure img,
+.permalinkapge article blockquote img {
+    max-width: 100%;
+    max-height: calc(100vh - 72px);
+}
+
+article.type_photo img,
+article.type_link img,
+article.type_text img,
+article figure img,
+article blockquote img {
+    width: auto;
+    height: auto;
+    vertical-align: baseline;
+    max-height: 50vh;
+}
+
+.indexpage article figure:nth-child(1n+2) {
+    display: none;
+}
+
+.permalinkpage .type_video .video-container {
+    height: 0;
+    padding-bottom: 67.5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.permalinkpage .type_video .video-container embed,
+.permalinkpage .type_video .video-container iframe,
+.permalinkpage .type_video .video-container object,
+.permalinkpage .type_video .video-container video {
+    top: 0;
+    left: 0;
+    height: 100% !important;
+    position: absolute;
+}
+
+.permalinkpage .type_video.widescreen .video-container {
+    padding-bottom: 56.25%;
+}
+
+.permalinkpage .type_video.vimeo .video-container {
+    padding-top: 0;
+}
+
+.type_video .video-container embed,
+.type_video .video-container iframe,
+.type_video .video-container object,
+.type_video .video-container video {
+    width: 100%;
+    height: 100%;
 }
 
 /* audio */
@@ -564,7 +536,25 @@ article .content blockquote {
     width: 100%;
 }
 
+/* link */
+
+article .link-wrapper {
+    background: {color:Black};
+    padding: 24px;
+}
+
+article .link-wrapper a {
+    color: {color:Background};
+}
+
 /* answer */
+
+@media only screen and (min-width: 768px) {
+    .permalinkpage .item-answer {
+        width: 60%;
+        margin: 0 auto;
+    }
+}
 
 .type_answer .avatar {
     display: inline-block;
@@ -595,15 +585,10 @@ article .content blockquote {
 .type_answer .asker-question-wrap {
     position: relative;
 	background: {color:Conversation wrap};
-	border-radius: .4em;
 	padding: 12px;
 	display: inline-block;
 	width: 75%;
 	white-space: normal;
-	-o-border-radius: .4em;
-	-ms-border-radius: .4em;
-	-moz-border-radius: .4em;
-	-webkit-border-radius: .4em;
 }
 
 .asker-question-wrap:after {
@@ -630,14 +615,9 @@ article .content blockquote {
 .type_answer .answerer-answer-wrap {
     position: relative;
 	background-color: {color:Conversation wrap};
-	border-radius: .4em;
 	padding: 12px;
 	display: inline-block;
 	width: 75%;
-	-o-border-radius: .4em;
-	-ms-border-radius: .4em;
-	-moz-border-radius: .4em;
-	-webkit-border-radius: .4em;
 	float: right;
 }
 
@@ -676,64 +656,70 @@ article .content blockquote {
     margin-top: 24px;
 }
 
-/* Post-meta */
+/* Post-footer */
 
-.permalinkpage article .post-footer,
-.permalinkpage article .content,
-.permalinkpage article .post-figure {
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 5%;
-    white-space: normal;
+.indexpage article .post_inner:hover .post-footer,
+.indexpage article .post_inner:focus .post-footer {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
 }
 
-@media only screen and (max-width: 640px) {
+.indexpage article .post-footer {
+    padding-left: 12px;
+    pointer-events: none;
+    opacity: 0;
+    margin: 6px 0;
+    transform: translate3d( -28px, 0 , 0);
+    transition: all .25s ease;
+    border-left: solid 2px {color:Body};
+}
 
-    .permalinkpage article .post-footer {
-        display: none;
-    }
-
-    .permalinkpage article.type_text .content,
-    .permalinkpage article.type_quote .content,
-    .permalinkpage article.type_answer .content {
-        width: 100%;
-        margin-right: 0;
-        padding-bottom: 40px;
-    }
+.indexpage article.type_link .post-footer {
+    display: none;
 }
 
 article .post-footer a {
     color: {color:Link};
 }
 
-.indexpage article .post-footer {
-    display: none !important;
-}
-
 article .post-meta {
     overflow: hidden;
-    padding-bottom: 8px;
-    border-bottom: solid 1px {color:Light grey};
+    text-align: left;
 }
 
-article .date {
+.permalinkpage article .post-meta {
+    margin: 20px 0;
+}
+
+article .post-meta .date,
+article .post-meta .counts {
     display: inline-block;
-    float: left;
+    font-size: .9rem;
+    margin-right: 12px;
 }
 
-article .post-meta .date > span:not(.{select:Date format}) {
+.indexpage article .post-meta a {
+    color: {color:Link};
+}
+
+article .post-meta .date > span:not(.{select:Date format}),
+article .post-meta .date > a:not(.{select:Date format}) {
     display: none;
 }
 
-article .post-meta li {
+article .control {
     float: right;
-    display: inline-block;
-    margin-left: 12px;
+    font-size: .9rem;
 }
 
-article .counts {
-    padding: 8px 0;
-    border-bottom: solid 1px {color:Light grey};
+.indexpage article .control {
+    display: none;
+}
+
+article .control li {
+    float: right;
+    margin-left: 12px;
 }
 
 /* Notes */
@@ -742,8 +728,20 @@ ol.notes {
     list-style-type: none;
     overflow: hidden;
     vertical-align: top;
-    font-size: .84em;
-    padding-top: 8px;
+    font-size: .8rem;
+    margin-top: 35px;
+    background: #f7f7f7;
+    word-break: break-word;
+}
+
+ol.notes li {
+    padding: 8px;
+    border-bottom: solid 1px #eeeeee;
+    text-align: center;
+}
+
+ol.notes li:last-child {
+    border: none;
 }
 
 ol.notes a {
@@ -754,15 +752,11 @@ ol.notes .avatar {
     display: none;
 }
 
-ol.notes li:nth-of-type(1n+8) {
-  display: none;
-}
-
 /* Tags */
 
 .tags-wrap {
     white-space: normal;
-    font-size: .9em;
+    font-size: .8rem;
     overflow: hidden;
 }
 
@@ -772,7 +766,7 @@ ol.notes li:nth-of-type(1n+8) {
 
 .tags li {
     display: inline-block;
-    margin: 2px 8px 2px 0;
+    margin: 8px 0;
 }
 
 .tags li:nth-of-type(1n+20) {
@@ -781,15 +775,63 @@ ol.notes li:nth-of-type(1n+8) {
 
 .tags li a {
     color: {color:Link};
-    padding: 4px 8px;
-    background: {color:Light grey};
-    border-radius: 2px;
+    padding: 2px 16px;
+    border-left: solid 2px {color:Light grey};
 }
 
 /* Pagination */
 
 .pagination {
     display: none;
+}
+
+/* like-button */
+.like_button {
+    cursor: pointer;
+}
+
+.like-control { /* Make a parent element */
+    position: relative;
+}
+
+.like-control i {
+    color: {color:Post meta color};
+    transition: color 0.25s ease;
+    -o-transition: color 0.25s ease;
+    -ms-transition: color 0.25s ease;
+    -moz-transition: color 0.25s ease;
+    -webkit-transition: color 0.25s ease;
+}
+
+.like-control:hover i { /* Select your color of choice */
+    color: #f5655e;
+}
+.like-control .like_button { /* Position like button above your custom one */
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.like-control .like_button.liked { /* Keep the functionality active */
+    opacity: 1;
+}
+
+.like-control .like_button.liked iframe { /* Keep the functionality active */
+    opacity: 0;
+    z-index: 1;
+}
+
+
+.like-control .like_button.liked:before {
+    visibility: visible;
+	position: absolute;
+	top: 0;
+	font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f004";
+    cursor: pointer;
+    color: #f5655e;
 }
 
 /* Extra */
@@ -810,9 +852,16 @@ ol.notes li:nth-of-type(1n+8) {
         display: none !important;
 }
 
-{CustomCSS}
-
 </style>
+
+<style>
+@import url('https://rsms.me/inter/inter-ui.css');
+html { font-family: 'Inter UI', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter UI var alt', sans-serif; }
+}
+</style>
+<style>{CustomCSS}</style>
 
 {block:IfGoogleAnalyticsID}
 <script>
@@ -836,7 +885,17 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 
 <div class="inner_wrapper">
 
-{block:TagPage}{/block:TagPage}
+  {block:TagPage}
+  <div class="page-heading">
+      <span class="tag-page-heading">#{Tag}</span>
+  </div>
+  {/block:TagPage}
+
+  {block:SearchPage}
+  <div class="page-heading search-result-heading">
+    <h3>{lang:Search results for SearchQuery} ({SearchResultCount})</h3>
+  </div>
+  {/block:SearchPage}
 
 <!-- Header -->
 <div class="sidebar clearfix">
@@ -926,10 +985,10 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 <section id="posts" class="selector">
 <div class="grid-sizer"></div>
 <section id="horizontal">
-{block:Posts}
+{block:Posts inlineMediaWidth="500"}
 <article class="type_{PostType} {block:Caption}with-cap{/block:Caption} {block:Photoset}type_photoset{/block:Photoset} {block:Date}data-post-id="{PostID}"{/block:Date}">
-<div class="post_inner">
-<div class="post__inner">
+<div class="post_inner" onclick="">
+{block:Permalinkpage}<div class="post__inner">{/block:Permalinkpage}
 
 
 {block:Text}
@@ -940,7 +999,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 </div>
 {/block:Title}
 {block:Body}
-<div class="content">{Body}</div>
+<div class="content clearfix">{Body}</div>
 {/block:Body}
 
 {block:More}
@@ -973,7 +1032,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 </figure> <!-- /.post-figure -->
 
   {block:Caption}
-  <div class="content">
+  <div class="content caption">
           {Caption}
   </div>
   {/block:Caption}
@@ -999,7 +1058,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
   </div>
 
   {block:Caption}
-  <div class="content">
+  <div class="content caption">
           {Caption}
   </div>
   {/block:Caption}
@@ -1021,7 +1080,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 {/block:PermalinkPage}
 
 {block:Caption}
-<div class="content">
+<div class="content caption">
         {Caption}
 </div>
 {/block:Caption}
@@ -1037,7 +1096,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 </div>
 
 {block:Caption}
-<div class="content">
+<div class="content caption">
         {Caption}
 </div>
 {/block:Caption}
@@ -1058,7 +1117,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 {/block:ExternalAudio}
 
 {block:Caption}
-<div class="content">
+<div class="content caption">
         {Caption}
 </div>
 {/block:Caption}
@@ -1073,7 +1132,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
         {Quote}
     </blockquote>
     {block:Source}
-    <div class="source">&ensp;&ndash;&ensp;{Source}</div>
+    <div class="source">&ensp;&ndash;&ensp;<strong>{Source}</strong></div>
     {/block:Source}
 </div>
 {/block:Quote}
@@ -1154,33 +1213,32 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 {block:Date}
     <footer class="post-footer">
 
-    <div class="post-meta">
+    <ul class="post-meta">
+
+    <li class="counts clearfix">
+      {block:NoteCount}
+          {block:IndexPage}<a href="{Permalink}#notes">{/block:IndexPage}{block:PermalinkPage}<a class="tumblr-note-count" href="#notes">{/block:PermalinkPage}
+              {NoteCountWithLabel}
+          </a>
+      </li> <!-- /counts -->
+      {/block:NoteCount}
+
         {block:IfShowdate}
-    <div class="date type_{select:Date format}">
+    <li class="date type_{select:Date format}">
         {block:IndexPage}<a class="relative-dates" href="{Permalink}">{/block:IndexPage}{block:PermalinkPage}<span class="relative-dates">{/block:PermalinkPage}{TimeAgo}{block:IndexPage}</a>{/block:IndexPage}{block:PermalinkPage}</span>{/block:PermalinkPage}
         {block:IndexPage}<a class="us" href="{Permalink}">{/block:IndexPage}{block:PermalinkPage}<span class="us">{/block:PermalinkPage}{Month} {DayOfMonth}, {Year}{block:IndexPage}</a>{/block:IndexPage}{block:PermalinkPage}</span>{/block:PermalinkPage}
         {block:IndexPage}<a class="uk" href="{Permalink}">{/block:IndexPage}{block:PermalinkPage}<span class="uk">{/block:PermalinkPage}{DayOfMonth} {Month}, {Year}{block:IndexPage}</a>{/block:IndexPage}{block:PermalinkPage}</span>{/block:PermalinkPage}
         {block:IndexPage}<a class="jp" href="{Permalink}">{/block:IndexPage}{block:PermalinkPage}<span class="jp">{/block:PermalinkPage}{Year}年{MonthNumber}月{DayOfMonth}日{block:IndexPage}</a>{/block:IndexPage}{block:PermalinkPage}</span>{/block:PermalinkPage}
-    </div>
+    </li>
     {/block:IfShowdate}
 
     <ul class="control">
-    <li class="like-control" data-reblog="{ReblogURL}" data-id="{PostID}"><i class="far fa-heart"></i>{LikeButton size="14"}</li>
-        <li class="reblog-control">{ReblogButton color="black" size="14"}</li>
-    </div> <!-- /.post-meta -->
-
-      <ul class="counts clearfix">
-      {block:NoteCount}
-      <li class="note-count">
-          {block:IndexPage}<a href="{Permalink}#notes">{/block:IndexPage}{block:PermalinkPage}<a class="tumblr-note-count" href="#notes">{/block:PermalinkPage}
-              {NoteCountWithLabel}
-          </a>
-      </li> <!-- /.note-count -->
-      {/block:NoteCount}
-      </ul> <!-- /.counts -->
+    <li class="like-control" data-reblog="{ReblogURL}" data-id="{PostID}">{LikeButton size="14"}<i class="far fa-heart"></i></li>
+        <li class="reblog-control"><a href="{ReblogURL}">Reblog</a></li>
+    </ul> <!-- /.post-meta -->
 
 
-                  {block:PermalinkPage}
+        {block:PermalinkPage}
                       {block:PostNotes}
                               <div id="notes">{PostNotes-64}</div>
                       {/block:PostNotes}
@@ -1204,7 +1262,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 
 
 
-</div> <!-- /.post__inner -->
+{block:Permalinkpage}</div>{/block:Permalinkpage} <!-- /.post__inner -->
 </div> <!-- /.post_inner -->
 
 </article> <!-- /.post -->
@@ -1242,6 +1300,8 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.0b2.120519/jquery.infinitescroll.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.11/jquery.mousewheel.min.js"></script>
-<script src="https://static.tumblr.com/mravxd7/BhNpiuy90/scrollconvertor.min.js"></script>
-<script src="https://static.tumblr.com/mravxd7/Vhtpl28bo/main.min.js"></script>
+<script src="https://static.tumblr.com/mravxd7/M98pl82zi/main.js"></script>
+
+
+
 </html>
