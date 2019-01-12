@@ -43,6 +43,7 @@
 <meta name="if:Show RSS" content="0"/>
 <meta name="if:Show Date" content="1"/>
 <meta name="if:Overlay On" content="1"/>
+<meta name="if:Show search form" content="1"/>
 
 <!-- Google font -->
 <meta name="text:Google font" content=""/>
@@ -98,22 +99,6 @@ ul {
   -webkit-font-smoothing: antialiased;
 }
 
-textarea,
-input[type="text"],
-input[type="button"],
-input[type="submit"] {
-     -webkit-appearance: none;
-     border-radius: 0;
-}
-
-input:focus {
-    outline: none;
-}
-
-input {
-    background: transparent;
-}
-
 .clearfix:after {
     visibility: hidden;
     display: block;
@@ -162,11 +147,6 @@ body.header-open {
 
 /* Header */
 
-input,form {
-    font-family: Helvetica, sans-serif;
-    font-weight: 300;
-}
-
 textarea,
 input[type="text"],
 input[type="button"],
@@ -182,6 +162,25 @@ input:focus {
 input {
     border: none;
     background: transparent;
+}
+
+.search {
+    overflow: hidden;
+    margin: 16px 0;
+    width: 100%;
+    padding-top: 8px;
+}
+
+.search .input-search {
+    display: block;
+    padding: 0 16px;
+    font-size: .8rem;
+    border-left: solid 2px {color:Light grey};
+    transition: all .25s ease;
+}
+
+.search .input-search:focus {
+    border-left: solid 2px {color:Black};
 }
 
 .toggle-btn {
@@ -374,6 +373,15 @@ input {
         opacity: 1;
         transition: opacity .48s ease;
     }
+}
+
+.page-heading {
+    position: absolute;
+    bottom: 60px;
+    left: 40px;
+    border-left: solid 2px {color:Black};
+    padding-left: 12px;
+    line-height: 1.6rem;
 }
 
 article {
@@ -860,6 +868,23 @@ html { font-family: 'Inter UI', sans-serif; }
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter UI var alt', sans-serif; }
 }
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"] {
+     -webkit-appearance: none;
+     border-radius: 0;
+     font-family: 'Inter UI', sans-serif;
+}
+
+input:focus {
+    outline: none;
+}
+
+input {
+    background: transparent;
+}
 </style>
 <style>{CustomCSS}</style>
 
@@ -966,6 +991,12 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
         </ul>
 
     </div> <!-- /.nav -->
+
+    {block:IfShowsearchform}
+              <div class="search">
+                            <form class="search-form" action="/search" accept-charset="utf-8" method="get">
+                                <input class="input-search" type="text" name="q" id="search" size="16" value="{SearchQuery}" placeholder="{lang:Search}"/> </form></div>
+              {/block:IfShowsearchform}
 
     <div class="footer-wrap">
         <footer class="copyright">
