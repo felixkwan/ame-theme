@@ -44,6 +44,7 @@
 <meta name="if:Show Date" content="1"/>
 <meta name="if:Overlay On" content="1"/>
 <meta name="if:Show search form" content="1"/>
+<meta name="if:Animate post footer" content="0"/>
 
 <!-- Google font -->
 <meta name="text:Google font" content=""/>
@@ -667,6 +668,14 @@ article .link-wrapper a {
 
 /* Post-footer */
 
+.indexpage article .post-footer {
+    padding-left: 12px;
+    pointer-events: none;
+    margin: 6px 0;
+    border-left: solid 2px {color:Body};
+}
+
+{block:IfAnimatepostfooter}
 .indexpage article .post_inner:hover .post-footer,
 .indexpage article .post_inner:focus .post-footer {
     opacity: 1;
@@ -675,14 +684,11 @@ article .link-wrapper a {
 }
 
 .indexpage article .post-footer {
-    padding-left: 12px;
-    pointer-events: none;
     opacity: 0;
-    margin: 6px 0;
     transform: translate3d( -28px, 0 , 0);
     transition: all .25s ease;
-    border-left: solid 2px {color:Body};
 }
+{/block:IfAnimatepostfooter}
 
 .indexpage article.type_link .post-footer {
     display: none;
