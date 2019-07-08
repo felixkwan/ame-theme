@@ -47,7 +47,7 @@
 
 <!-- Google font -->
 <meta name="text:Google font" content=""/>
-<meta name="text:Font light weight" content=""/>
+<meta name="text:Font light weight" content="400"/>
 
 <link href="https://fonts.googleapis.com/css?family={text:Google font}" rel="stylesheet">
 
@@ -117,6 +117,7 @@ body {
     vertical-align: baseline;
     background-color: {color:Background};
     line-height: 1.8rem;
+    {block:IfFontlightweight}font-weight: {text:Font light weight};{/block:IfFontlightweight}
 }
 
 body.indexpage {
@@ -1332,4 +1333,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.0b2.120519/jquery.infinitescroll.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.11/jquery.mousewheel.min.js"></script>
 <script src="https://static.tumblr.com/mravxd7/M98pl82zi/main.js"></script>
+
+
+
 </html>
